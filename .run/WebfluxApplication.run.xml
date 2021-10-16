@@ -1,0 +1,95 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApdsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="Apds" />
+    <extension name="net.ashald.envfile">
+      <option name="IS_ENABLED" value="false" />
+      <option name="IS_SUBST" value="false" />
+      <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+      <option name="IS_IGNORE_MISSING_FILES" value="false" />
+      <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+      <ENTRIES>
+        <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+      </ENTRIES>
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.apds.projects.api.WebfluxApplication" />
+    <option name="ENABLE_JMX_AGENT" value="false" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+    <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <additionalParameters>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="URL" />
+        <option name="value" value="jdbc:postgresql://localhost:5432/apds" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="USERNAME" />
+        <option name="value" value="postgres" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="PASSWORD" />
+        <option name="value" value="Test!@#$" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="DIALECT" />
+        <option name="value" value="org.hibernate.dialect.PostgreSQL95Dialect" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="REDIS_HOST" />
+        <option name="value" value="localhost" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="REDIS_PORT" />
+        <option name="value" value="16379" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="REDIS_PASS" />
+        <option name="value" value="ENC(RE0TFEbdNyRMb+IwbeLLvrhKBAjKmStj)" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="TYPE_CACHE" />
+        <option name="value" value="redis" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="ALIVE_TIME_CACHE" />
+        <option name="value" value="60000" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="JWT_SECRET_KEY" />
+        <option name="value" value="@#4eunsl12*8$llkJUSAND*******" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="JWT_ISSUSER" />
+        <option name="value" value="carlos vasquez" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="JWT_EXPIRES_DAY" />
+        <option name="value" value="30" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="PORT" />
+        <option name="value" value="8080" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="PATH_LOGS" />
+        <option name="value" value="target/logs" />
+      </param>
+    </additionalParameters>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

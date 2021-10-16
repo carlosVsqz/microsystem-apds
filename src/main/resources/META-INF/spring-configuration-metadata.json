@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "auth.jwt.secretKey",
+      "type": "java.lang.String",
+      "description": "Description for auth.jwt.secretKey."
+    },
+    {
+      "name": "auth.jwt.issuer",
+      "type": "java.lang.String",
+      "description": "Description for auth.jwt.issuer."
+    },
+    {
+      "name": "auth.jwt.expireDays",
+      "type": "java.lang.String",
+      "description": "Description for auth.jwt.expireDays."
+    },
+    {
+      "name": "spring.datasource.hikari.sql-script-encoding",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.sql-script-encoding."
+    },
+    {
+      "name": "spring.datasource.hikari.initialization-mode",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.initialization-mode."
+    }
+  ] }

@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres
+    container_name: webflux-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "Test!@#$$"
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:5.0.8
+    container_name: webflux-redis
+    hostname: redis
+    command: redis-server --appendonly yes --requirepass redis12&*
+    restart: always
+    ports:
+      - "16379:6379"

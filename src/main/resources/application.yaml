@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: APDS
+  datasource:
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      validation-timeout: 40000
+      sql-script-encoding: UTF-8
+      initialization-mode: always
+    #    url: jdbc:h2:mem:test
+    url: ${URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      #      ddl-auto: create
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        #        dialect: org.hibernate.dialect.H2Dialect
+        #        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: ${DIALECT}
+    open-in-view: false
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    use-code-as-default-message: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    time-zone: UTC
+    default-property-inclusion: non_empty
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASS}
+    lettuce:
+      pool:
+        min-idle: 2
+        max-idle: 5
+        max-active: 10
+  cache:
+    type: ${TYPE_CACHE}
+    redis:
+      cache-null-values: false
+      time-to-live: ${ALIVE_TIME_CACHE}
+
+auth:
+  jwt:
+    secretKey: ${JWT_SECRET_KEY}
+    issuer: ${JWT_ISSUSER}
+    expireDays: ${JWT_EXPIRES_DAY}
+
+server:
+  port: ${PORT}
+
+  error:
+    whitelabel:
+      enabled: false
+logging:
+  level:
+    root: debug
+    org.springframework.web.reactive.function.client.ExchangeFunctions: info
+    org.hibernate.type.descriptor.sql: trace
+  file:
+    path: ${PATH_LOGS}
