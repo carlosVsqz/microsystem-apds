@@ -50,7 +50,7 @@
       <param>
         <option name="enabled" value="true" />
         <option name="name" value="REDIS_PASS" />
-        <option name="value" value="ENC(RE0TFEbdNyRMb+IwbeLLvrhKBAjKmStj)" />
+        <option name="value" value="redis12&amp;*" />
       </param>
       <param>
         <option name="enabled" value="true" />

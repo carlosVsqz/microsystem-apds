@@ -14,7 +14,8 @@ export type FormField =
   | FormSelectField
   | FormDateField
   | FormDateTimeField
-  | FormPictureListField;
+  | FormPictureListField
+  | FormPasswordField;
 
 export interface FormBaseField {
   label?: string;
@@ -67,6 +68,10 @@ export interface FormDateTimeField extends FormBaseField {
 
 export interface FormPictureListField extends FormBaseField {
   type: 'picturelist';
+}
+
+export interface FormPasswordField extends FormBaseField {
+  type: 'password';
 }
 
 export interface FormFieldOption {

@@ -74,7 +74,23 @@ function FieldSwitch({
         />
       );
     }
-
+    case 'password': {
+      return (
+          <Input
+              type={name}
+              name={name}
+              value={value}
+              onChange={(e: any) => setFieldValue(name, e.target.value)}
+              overrides={{
+                InputContainer: {
+                  style: () => {
+                    return {backgroundColor: 'transparent'};
+                  },
+                },
+              }}
+          />
+      );
+    }
     case 'textarea': {
       return (
         <Textarea

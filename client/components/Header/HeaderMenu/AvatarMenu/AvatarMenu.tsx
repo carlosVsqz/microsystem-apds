@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Router from 'next/router';
 import { Block } from 'baseui/block';
 import { Avatar } from 'baseui/avatar';
@@ -9,6 +9,7 @@ import {
   useThemeSwitcherCtx,
   THEME,
 } from '../../../../contexts/theme/theme.provider';
+import {userService} from "../../../../services/user.service";
 
 type AvatarMenuType = {
   name?: string;
@@ -21,6 +22,13 @@ type AvatarMenuType = {
 type MenuType = {
   onClick?: () => void;
 };
+
+function logout() {
+    userService.logout();
+}
+
+// only show nav when logged in
+// if (!user) return null;
 
 const Menu = ({ onClick }: MenuType) => {
   const { theme, setTheme } = useThemeSwitcherCtx();
@@ -49,8 +57,8 @@ const Menu = ({ onClick }: MenuType) => {
           {theme === THEME.light ? 'Dark Mode' : 'Light Mode'}
         </MenuItem>
       </li>
-      <Line></Line>
-      <li onClick={() => Router.push('/login')}>
+      <Line/>
+      <li onClick={() => logout() }>
         <MenuItem onClick={onClick}>Logout</MenuItem>
       </li>
     </MenuWrapper>

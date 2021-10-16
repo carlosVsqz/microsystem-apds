@@ -14,7 +14,7 @@ interface FormProps {
   onSubmit: (values: any) => void;
 }
 
-function Form({ initialValues, dataSchema, uiSchema, onSubmit }: FormProps) {
+export default function Form({ initialValues, dataSchema, uiSchema, onSubmit }: FormProps) {
   const { fields: fieldsData } = dataSchema;
   const { sections } = uiSchema;
   return (
@@ -145,27 +145,9 @@ const getFieldValue = ({
     case 'checkbox':
     case 'radio':
     case 'date':
+    case 'password':
       return values[name];
     case 'select':
       return values[name].values;
   }
 };
-
-export default function ExampleFormFormik() {
-  return (
-    <Form
-      initialValues={{
-        name: '',
-        email: '',
-        dateOfBirth: '',
-        favoriteColor: [],
-        aboutYourself: '',
-        radioGroup: '',
-        profileStatus: '',
-      }}
-      dataSchema={dataSchema}
-      uiSchema={uiSchema}
-      onSubmit={values => alert(JSON.stringify(values, null, 4))}
-    />
-  );
-}

@@ -7,6 +7,8 @@ import { H4 } from 'baseui/typography';
 import FormMenu from 'components/SideMenu/FormMenu';
 import Container from 'components/UiElements/Container/Container';
 import FormFormik from 'containers/Formik/Form';
+import Form from "containers/Formik/Form";
+import {dataSchema, uiSchema} from "../../containers/Formik/schemas";
 const Forms: NextPage<{}> = () => {
 	return (
 		<>
@@ -24,7 +26,21 @@ const Forms: NextPage<{}> = () => {
 						<Cell span={[12, 12, 9]}>
 							<Block paddingTop={['10px', '15px', '30px', '0']}>
 								<H4 marginBottom="30px">Formik Form</H4>
-								<FormFormik />
+								{/*<FormFormik />*/}
+								     <Form
+								      initialValues={{
+								        name: '',
+								        email: '',
+								        dateOfBirth: '',
+								        favoriteColor: [],
+								        aboutYourself: '',
+								        radioGroup: '',
+								        profileStatus: '',
+								      }}
+								      dataSchema={dataSchema}
+								      uiSchema={uiSchema}
+								      onSubmit={values => alert(JSON.stringify(values, null, 4))}
+								    />
 							</Block>
 						</Cell>
 					</Grid>

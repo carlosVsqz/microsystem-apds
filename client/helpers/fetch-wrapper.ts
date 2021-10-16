@@ -1,8 +1,4 @@
-import getConfig from 'next/config';
-
 import { userService } from 'services/user.service';
-
-const { publicRuntimeConfig } = getConfig();
 
 export const fetchWrapper = {
     get,
@@ -23,9 +19,11 @@ function post(url, body) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },
-        credentials: 'include',
+        credentials: 'same-origin',
         body: JSON.stringify(body)
     };
+    console.log("this url " + url );
+    // @ts-ignore
     return fetch(url, requestOptions).then(handleResponse);
 }
 
@@ -35,6 +33,7 @@ function put(url, body) {
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },
         body: JSON.stringify(body)
     };
+    console.log("this url " + url);
     return fetch(url, requestOptions).then(handleResponse);
 }
 
@@ -53,7 +52,8 @@ function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
     const user = userService.userValue;
     const isLoggedIn = user && user.token;
-    const isApiUrl = url.startsWith(publicRuntimeConfig.apiUrl);
+    console.log(url)
+    const isApiUrl = url.startsWith("http://localhost:8080");
     if (isLoggedIn && isApiUrl) {
         return { Authorization: `Bearer ${user.token}` };
     } else {
@@ -63,8 +63,8 @@ function authHeader(url) {
 
 function handleResponse(response) {
     return response.text().then(text => {
-        const data = text && JSON.parse(text);
-
+        const data = text
+            // && JSON.parse(text);
         if (!response.ok) {
             if ([401, 403].includes(response.status) && userService.userValue) {
                 // auto logout if 401 Unauthorized or 403 Forbidden response returned from api

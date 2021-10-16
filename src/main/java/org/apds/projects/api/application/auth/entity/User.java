@@ -24,18 +24,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode(of = {"userId"})
+@EqualsAndHashCode(of = {"username"})
 public class User implements Serializable {
 
     @Id
-    private String userId;
+    private String username;
 
     private String password;
 
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
         name = "user_scope",
-        joinColumns = @JoinColumn(name = "user_id"),
+        joinColumns = @JoinColumn(name = "username"),
         inverseJoinColumns = @JoinColumn(name = "authority")
     )
     private Set<Scope> authorities = new HashSet<>();

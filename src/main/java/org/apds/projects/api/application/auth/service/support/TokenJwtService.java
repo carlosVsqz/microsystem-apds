@@ -40,7 +40,7 @@ public class TokenJwtService implements TokenService {
 
         ZonedDateTime expires = LocalDateTime.now().atZone(ZoneId.systemDefault()).plusDays(expireDays);
         String accessToken = JWT.create()
-                                .withSubject(user.getUserId())
+                                .withSubject(user.getUsername())
                                 .withIssuer(issuer)
                                 .withClaim("scopes", user.getAuthorities().stream().map(scope -> scope.getAuthority()).collect(Collectors.toList()))
                                 .withIssuedAt(new Date())
@@ -48,7 +48,7 @@ public class TokenJwtService implements TokenService {
                                 .sign(Algorithm.HMAC256(secretKey));
         return
             TokenInfo.builder()
-                     .user(user.getUserId())
+                     .user(user.getUsername())
                      .type("Bearer")
                      .accessToken(accessToken)
                      .expiresAt(expires.toLocalDateTime())

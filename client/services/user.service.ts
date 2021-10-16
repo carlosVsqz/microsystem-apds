@@ -17,7 +17,8 @@ export const userService = {
 };
 
 function login(username, password) {
-    return fetchWrapper.post(`${baseUrl}/api/auth/login`, { username, password })
+    console.log("login to server "+process.env.API_URL+"...")
+    return fetchWrapper.post(`http://localhost:8080/api/auth/login`, { username, password })
         .then(user => {
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
             userSubject.next(user);

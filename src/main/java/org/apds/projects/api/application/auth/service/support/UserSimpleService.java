@@ -35,15 +35,15 @@ public class UserSimpleService implements UserService {
     private final TransactionTemplate transactionTemplate;
 
     @Transactional(readOnly = true)
-    public Mono<User> findById(@NonNull String userId) {
+    public Mono<User> findById(@NonNull String username) {
 
         return
             RxUtil.cacheMono(
                 cacheManager
-                , "user"
-                , userId
+                , "users"
+                , username
                 , Mono.defer(() -> transactionTemplate.execute(status ->
-                        userRepository.findById(userId)
+                        userRepository.findById(username)
                                       .map(user -> {
                                           Hibernate.initialize(user.getAuthorities());
                                           return user;
@@ -53,8 +53,7 @@ public class UserSimpleService implements UserService {
                       ))
                       .subscribeOn(jdbcScheduler)
                 , User.class
-            )
-            ;
+            );
     }
 
     @Transactional
@@ -66,7 +65,7 @@ public class UserSimpleService implements UserService {
                     User user = userRepository.findById(userId)
                                               .orElseGet(() -> {
                                                   User newbie = new User();
-                                                  newbie.setUserId(userId);
+                                                  newbie.setUsername(userId);
                                                   return newbie;
                                               });
                     user.setPassword(password);
